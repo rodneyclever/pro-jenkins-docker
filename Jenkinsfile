@@ -19,7 +19,7 @@ pipeline {
                 // This securely unlocks the 'docker-hub-credentials' ID we just made
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     // Login, push both tags, and securely logout
-                    bat 'echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin'
+                    bat 'echo %DOCKER_PASS%| docker login -u %DOCKER_USER% --password-stdin'
                     bat "docker push %DOCKER_HUB_USER%/%IMAGE_NAME%:%IMAGE_TAG%"
                     bat "docker push %DOCKER_HUB_USER%/%IMAGE_NAME%:latest"
                     bat 'docker logout'
