@@ -29,7 +29,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 bat returnStatus: true, script: 'docker rm -f pro-web-app'
-                bat "docker run -d -p 9000:80 --name pro-web-app %DOCKER_HUB_USER%/%IMAGE_NAME%:latest"
+                bat "docker run -d -p 9000:3000 --name pro-web-app %DOCKER_HUB_USER%/%IMAGE_NAME%:latest"
             }
         }
     }
